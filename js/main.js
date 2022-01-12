@@ -1,9 +1,10 @@
 const cards = document.querySelectorAll('.memory-card');
-console.log(cards);
+// console.log(cards);
 
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
+let matchedCards = [];
 
 function flipCard() {
     if (lockBoard) return;
@@ -36,9 +37,10 @@ function flipCard() {
 function checkForMatch() {
 
     let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
+    console.log(isMatch);
 
 
-    isMatch ? (disableCards(), audioMatch(), addMatches()) : unflipCards();
+    isMatch ? (disableCards(), audioMatch()) : (unflipCards(), audioWrong());
 
     // if (firstCard.dataset.framework === secondCard.dataset.framework) {
     //     //it's a match
@@ -53,9 +55,34 @@ function checkForMatch() {
     // }
 
 
+    if (isMatch) {
+
+        matchedCards.push(isMatch);
+
+        console.log(matchedCards);
+    }
+    else {
+        console.log('no match');
+    }
+    if (matchedCards.length === cards.length / 2) {
+
+        let text = document.querySelector('.win');
+        text.innerHTML = "Ganaste!";
+        audioWin();
+
+        // setInterval(function() {
+        //     text.style.display = (text.style.display == 'none' ? '' : 'none');
+        // }, 500);
+        let gif = document.getElementById("gif");
+        gif.innerHTML = "<img src ='assets/images/dinotie.gif'/>";
+
+    }
+
     function disableCards() {
         firstCard.removeEventListener('click', flipCard);
         secondCard.removeEventListener('click', flipCard);
+
+
 
     }
 
@@ -71,6 +98,8 @@ function checkForMatch() {
         }, 1500)
 
     }
+
+
 }
 
 function audioMatch() {
@@ -79,6 +108,19 @@ function audioMatch() {
     audio.play();
 
 }
+function audioWrong() {
+
+    let audio = new Audio('assets/audio/wrong.wav');
+    audio.play();
+
+}
+function audioWin() {
+
+    let audio = new Audio('assets/audio/victory.wav');
+    audio.play();
+
+}
+
 
 function resetBoard() {
     [hasFlippedCard, lockBoard] = [false, false];
@@ -92,6 +134,8 @@ function resetBoard() {
     });
 })();
 
+
+
 function startGame() {
 
     window.location.reload();
@@ -100,7 +144,5 @@ function startGame() {
 
 };
 
-
 cards.forEach(card => card.addEventListener('click', flipCard))
-
 

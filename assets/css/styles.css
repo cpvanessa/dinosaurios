@@ -9,6 +9,7 @@ body {
   display: flex;
   background: #839e71;
   padding: 20px;
+  font-family: 'Balsamiq Sans', 'Roboto', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .memory-game {
@@ -28,7 +29,7 @@ body {
   transform: scale(1);
   transform-style: preserve-3d;
   transition: transform .5s;
-  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
 }
 
 .memory-card:active {
@@ -47,52 +48,89 @@ body {
   padding: 10px;
   position: absolute;
   border-radius: 5px;
-  background:  #4d4831;
+  background: #4d4831;
   backface-visibility: hidden;
 }
 
 .front-face {
   transform: rotateY(180deg);
-  
+
 }
 
-.start{
+.start {
   margin-top: 20px;
-  margin-left: 80px;;
+  margin-left: 60px;
+
 }
 
-button{
+button {
   padding: 20px;
   font-size: 30px;
   color: white;
-  font-family: 'Roboto','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   background-color: rgb(211, 83, 60);
   border-radius: 25px;
   border: 2px solid rgb(218, 111, 111);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(64, 23, 10, 0.35) 0px -2px 6px 0px inset;
-  
+
 }
+
+
+.win {
+  font-size: 30px;
+  transition: transform 2s;
+  color: rgb(255, 184, 41);
+  text-align: center;
+
+}
+
+#gif {
+  margin-top: 20px;
+  margin-left: 10px;
+  position: absolute;
+  z-index: 999;
+
+}
+
+
+
 @media (max-width: 600px) {
   .memory-game {
     width: 540px;
     height: 540px;
     margin-top: 125px;
-    margin-left: -346px;
+    margin-left: -316px;
     display: flex;
     flex-wrap: wrap;
     perspective: 1000px;
 
   }
-     
-    .start{
-      width: 340px;
-      height: 40px;
-      margin-top: 20px;
-     padding-left: 20px;
-     margin-right: 26px;;
-    }
-  button{
+
+  .start {
+    width: 340px;
+    height: 40px;
+    margin-top: 20px;
+    /* padding-left: 20px; */
+    margin-right: 36px;
+    /* margin-left: 40px; */
+    text-align: center;
+
+  }
+
+  button {
     font-size: 15px;
   }
-   
+
+  .win {
+    font-size: 20px;
+    margin-left: 5px;
+    transition: transform 2s;
+
+  }
+
+  #gif {
+    margin-left: -100px;
+    margin-top: 30px;
+
+  }
+
 }
