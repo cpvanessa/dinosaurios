@@ -110,7 +110,7 @@ function audioMatch() {
 }
 function audioWrong() {
 
-    let audio = new Audio('assets/audio/wrong.wav');
+    let audio = new Audio('assets/audio/wrongmusic.wav');
     audio.play();
 
 }
