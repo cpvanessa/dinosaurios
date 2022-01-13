@@ -50,6 +50,7 @@ body {
   border-radius: 5px;
   background: #4d4831;
   backface-visibility: hidden;
+  -webkit-backface-visibility:hidden;
 }
 
 .front-face {
